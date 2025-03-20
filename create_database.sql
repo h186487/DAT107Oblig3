@@ -1,30 +1,32 @@
 -- Skript for å opprette databasen og legge inn litt data
-    -- Skjema = oving:jpa
-        -- Tabell(er) = ansatt 
+    -- Skjema = forelesning1
+        -- Tabell(er) = person 
 
 -- MERK!!! DROP SCHEMA ... CASCADE sletter alt !!!
-DROP SCHEMA IF EXISTS oving_jpa CASCADE;
-CREATE SCHEMA oving_jpa;
-SET search_path TO oving_jpa;
+DROP SCHEMA IF EXISTS forelesning1 CASCADE;
 
+CREATE SCHEMA forelesning1;
+SET search_path TO forelesning1;
+    
+-- Ikke nødvendig å slette tabellen(e) siden vi har tomt skjema, men ...
+-- DROP TABLE person;
 
-CREATE TABLE ansatt
+CREATE TABLE person
 (
-    brukernavn CHAR(4) PRIMARY KEY,
-    fornavn VARCHAR(30),
-    etternavn VARCHAR(30),
-    ansettelsedato DATE,
-    stilling VARCHAR(100),
-    maanedslonn DECIMAL(10, 2),
-    CONSTRAINT ck_maanedslonn CHECK (maanedslonn >= 0)
+    id integer NOT NULL,
+    navn VARCHAR(30) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 INSERT INTO
-  ansatt(brukernavn, fornavn)
+  person(id, navn)
 VALUES
     (1001, 'Per Viskeler'),
     (1002, 'Atle Patle'),
     (1003, 'Donald Duck');
-    
- select * from ansatt;   
+
+select * from person;
+
+--IKKE FASIT, et eksempel fra forelsening
+
 
