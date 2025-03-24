@@ -3,6 +3,8 @@ package oblig3;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -14,6 +16,7 @@ import jakarta.persistence.Table;
 public class Ansatt {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ansattId;
 
 	private String brukernavn;
@@ -36,9 +39,8 @@ public class Ansatt {
 
 	}
 
-	public Ansatt(int ansattId, String brukernavn, String fornavn, String etternavn, Date ansettelseDato,
+	public Ansatt(String brukernavn, String fornavn, String etternavn, Date ansettelseDato,
 			String stilling, double manedslonn, int avdelingId) {
-		this.ansattId = ansattId;
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
