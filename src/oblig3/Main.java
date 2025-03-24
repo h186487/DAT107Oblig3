@@ -16,23 +16,24 @@ public class Main {
 
     public static void main(String[] args) {
     	
-	String brukernavn = "1001";
+	int ansattId = 1001;
     	
-        Ansatt a = finnAnsattMedBrukernavn(brukernavn);
+        Ansatt a = finnAnsattMedAnsattId(ansattId);
         
         if (a != null) {
         	System.out.println(a);
+        } else {
+        System.out.println("Ingen ansatt funnet med ansatt id: " + ansattId);
         }
-        System.out.println("Ingen ansatt funnet mer brukernavn: " + brukernavn);
     }
 
-    private static Ansatt finnAnsattMedBrukernavn(String brukernavn) {
+    private static Ansatt finnAnsattMedAnsattId(int ansattId) {
 
 		System.out.println("Kobler til database...");
         EntityManager em = emf.createEntityManager();
 
         try {
-            return em.find(Ansatt.class, brukernavn);
+            return em.find(Ansatt.class, ansattId);
         } finally {
             em.close();
         }

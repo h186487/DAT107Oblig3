@@ -20,7 +20,7 @@ public class Ansatt {
 	private String fornavn;
 	private String etternavn;
 
-	private Date datoAnsettelse;
+	private Date ansettelseDato;
 
 	private String stilling;
 	private double manedslonn;
@@ -36,13 +36,13 @@ public class Ansatt {
 
 	}
 
-	public Ansatt(int ansattId, String brukernavn, String fornavn, String etternavn, Date datoAnsettelse,
+	public Ansatt(int ansattId, String brukernavn, String fornavn, String etternavn, Date ansettelseDato,
 			String stilling, double manedslonn, int avdelingId) {
 		this.ansattId = ansattId;
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
-		this.datoAnsettelse = datoAnsettelse;
+		this.ansettelseDato = ansettelseDato;
 		this.stilling = stilling;
 		this.manedslonn = manedslonn;
 		this.avdelingId = avdelingId;
@@ -81,11 +81,11 @@ public class Ansatt {
 	}
 
 	public Date getDatoAnsettelse() {
-		return datoAnsettelse;
+		return ansettelseDato;
 	}
 
-	public void setDatoAnsettelse(Date datoAnsettelse) {
-		this.datoAnsettelse = datoAnsettelse;
+	public void setDatoAnsettelse(Date ansettelseDato) {
+		this.ansettelseDato = ansettelseDato;
 	}
 
 	public String getStilling() {
@@ -115,8 +115,10 @@ public class Ansatt {
 	@Override
 	public String toString() {
 		return "Ansatt [ansattId=" + ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
-				+ etternavn + ", datoAnsettelse=" + datoAnsettelse + ", stilling=" + stilling + ", manedslonn="
+				+ etternavn + ", ansettelseDato=" + ansettelseDato + ", stilling=" + stilling + ", manedslonn="
 				+ manedslonn + ", avdelingId=" + avdelingId + "]";
 	}
+
+	
 
 }

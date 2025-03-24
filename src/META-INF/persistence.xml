@@ -6,7 +6,7 @@
              
 	<persistence-unit name="ansattPU" transaction-type="RESOURCE_LOCAL">
 
-		<class>oblig.Ansatt</class>
+		<class>oblig3.Ansatt</class>
 		
 		<properties>
 		    <!--  Generelle JPA properties -->
