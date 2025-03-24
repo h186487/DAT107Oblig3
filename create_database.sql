@@ -3,29 +3,34 @@
         -- Tabell(er) = person 
 
 -- MERK!!! DROP SCHEMA ... CASCADE sletter alt !!!
-DROP SCHEMA IF EXISTS forelesning1 CASCADE;
+DROP SCHEMA IF EXISTS oblig3 CASCADE;
 
-CREATE SCHEMA forelesning1;
-SET search_path TO forelesning1;
+CREATE SCHEMA oblig3 ;
+SET search_path TO oblig3 ;
     
 -- Ikke nødvendig å slette tabellen(e) siden vi har tomt skjema, men ...
 -- DROP TABLE person;
 
-CREATE TABLE person
+CREATE TABLE Ansatt
 (
-    id integer NOT NULL,
-    navn VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id)
+    ansattId SERIAL PRIMARY KEY,
+    brukernavn VARCHAR(4) UNIQUE,
+    fornavn VARCHAR(50),
+    etternavn VARCHAR(50),
+    ansettelseDato DATE,
+    stilling VARCHAR(50),
+    manedslonn DECIMAL,
+    avdelingId INT
 );
 
 INSERT INTO
-  person(id, navn)
+  Ansatt(ansattId, brukernavn, fornavn)
 VALUES
-    (1001, 'Per Viskeler'),
-    (1002, 'Atle Patle'),
-    (1003, 'Donald Duck');
+    (1001, 'Mart','Marte Saevig'),
+    (1002, 'Nads','Nadia Lambrecht'),
+    (1003, 'J9','Jenny Hopland');
 
-select * from person;
+select * from Ansatt;
 
 --IKKE FASIT, et eksempel fra forelsening
 
