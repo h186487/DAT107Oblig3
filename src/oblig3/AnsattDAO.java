@@ -39,7 +39,7 @@ public class AnsattDAO {
 
 		try {
 			String q = """
-					select a from AnsattJ a
+					select a from Ansatt a
 					where a.brukernavn = :brukernavn
 					""";
 			TypedQuery<Ansatt> query = em.createQuery(q, Ansatt.class);
@@ -65,7 +65,7 @@ public class AnsattDAO {
 
 		try {
 			String q = """
-					select a from AnsattJ a
+					select a from Ansatt a
 					""";
 			TypedQuery<Ansatt> query = em.createQuery(q, Ansatt.class);
 
