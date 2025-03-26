@@ -55,5 +55,7 @@ public class Main {
 		prosjektDAO.foreTimerForProsjekt(1001, 1, 50);
 		
 		prosjektDAO.utskriftProsjektInfo(1);
+		
+		/* --------------------------------------------------------------------- */
 	}
 }
