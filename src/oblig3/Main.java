@@ -16,14 +16,16 @@ public class Main {
 		System.out.println("Ansatt med brukernavn J9: " + b);
 		
 		List<Ansatt> c = ansattDAO.hentAlleAnsatte();
-		System.out.println("Alle ansatte " + c);
+		for (Ansatt ansatt : c) {
+			System.out.println(ansatt);
+		}
 		
 		ansattDAO.oppdaterAnsatt(1002, "Bad Ass", 5000.1);
 		Ansatt oppdatert = ansattDAO.finnAnsattMedAnsattId(1002);
 		System.out.println("Oppdatert ansatt: " + oppdatert);
 		
-		ansattDAO.leggTilNyAnsatt("B2", "Bob", "Kåre", new Date(), "Loker", 1.11, 1);
-		Ansatt ny = ansattDAO.finnAnsattMedBrukernavn("B2");
+		ansattDAO.leggTilNyAnsatt("B4", "Bob", "Kåre", new Date(), "Loker", 1.11, 1);
+		Ansatt ny = ansattDAO.finnAnsattMedBrukernavn("B4");
 		System.out.println("Ny ansatt: " + ny);
 		
 		/* --------------------------------------------------------------------- */
