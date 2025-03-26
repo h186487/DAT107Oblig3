@@ -39,7 +39,7 @@ public class AnsattDAO {
 
 		try {
 			String q = """
-					select a from Ansatt a
+					select a from AnsattJ a
 					where a.brukernavn = :brukernavn
 					""";
 			TypedQuery<Ansatt> query = em.createQuery(q, Ansatt.class);
@@ -65,7 +65,7 @@ public class AnsattDAO {
 
 		try {
 			String q = """
-					select a from Ansatt a
+					select a from AnsattJ a
 					""";
 			TypedQuery<Ansatt> query = em.createQuery(q, Ansatt.class);
 
@@ -103,17 +103,34 @@ public class AnsattDAO {
 	/* --------------------------------------------------------------------- */
 
 	public void leggTilNyAnsatt(String brukernavn, String fornavn, String etternavn, Date ansettelseDato, String stilling,
-			double manedslonn, int avdelingsId) {
+			double manedslonn, int avdelingId) {
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
-			Ansatt a = new Ansatt(brukernavn, fornavn, etternavn, ansettelseDato, stilling, manedslonn, avdelingsId);
+			
+			String qStr = "SELECT a FROM Ansatt a WHERE a.brukernavn = :brukernavn";
+	        TypedQuery<Ansatt> q = em.createQuery(qStr, Ansatt.class);
+	        q.setParameter("brukernavn", brukernavn);
+			
+			List<Ansatt> eksisterendeAnsatt = q.getResultList();
+			if (!eksisterendeAnsatt.isEmpty()) {
+				throw new IllegalArgumentException("Brukernavnet finnes allerede.");
+			}
+			
+			Avdeling avdeling = em.find(Avdeling.class, avdelingId);
+			
+			if (avdeling != null) {
+				
+				Ansatt a = new Ansatt(brukernavn, fornavn, etternavn, ansettelseDato, stilling, manedslonn, avdeling);
 
-			em.persist(a);
-			tx.commit();
+				em.persist(a);
+				tx.commit();
+			} else {
+				System.out.println("Avdeling med ID " + avdeling + "finnes ikke.");
+			}
 			
 		} catch (Exception e) {
 	        if (tx.isActive()) {

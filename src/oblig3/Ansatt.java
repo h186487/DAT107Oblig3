@@ -6,12 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(schema = "oblig3")
-// @NamedQuery(name = "hentAllePersoner", query ="SELECT p FROM Person as p
-// order by p.id")
 
 public class Ansatt {
 
@@ -27,27 +27,24 @@ public class Ansatt {
 
 	private String stilling;
 	private double manedslonn;
-	private int avdelingId;
 	
-	// fjerne avdelingId herfra seinere og legge til 
-	 // Fremmednøkkel for Avdeling
-//    @ManyToOne
-//    @JoinColumn(name = "avdelingId", referencedColumnName = "AvdelingId", nullable = false)
-//    private Avdeling avdeling; // Relasjon til Avdeling
+    @ManyToOne
+    @JoinColumn(name= "avdelingId", referencedColumnName = "avdelingId", nullable = false)
+    private Avdeling avdeling; 
 
 	public Ansatt() {
 
 	}
 
 	public Ansatt(String brukernavn, String fornavn, String etternavn, Date ansettelseDato,
-			String stilling, double manedslonn, int avdelingId) {
+			String stilling, double manedslonn, Avdeling avdeling) {
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.ansettelseDato = ansettelseDato;
 		this.stilling = stilling;
 		this.manedslonn = manedslonn;
-		this.avdelingId = avdelingId;
+		this.avdeling = avdeling;
 	}
 
 	public int getAnsattId() {
@@ -106,19 +103,19 @@ public class Ansatt {
 		this.manedslonn = manedslonn;
 	}
 
-	public int getAvdelingId() {
-		return avdelingId;
+	public Avdeling getAvdeling() {
+		return avdeling;
 	}
 
-	public void setAvdelingId(int avdelingId) {
-		this.avdelingId = avdelingId;
+	public void setAvdeling(Avdeling avdeling) {
+		this.avdeling = avdeling;
 	}
 
 	@Override
 	public String toString() {
 		return "Ansatt [ansattId=" + ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
 				+ etternavn + ", ansettelseDato=" + ansettelseDato + ", stilling=" + stilling + ", manedslonn="
-				+ manedslonn + ", avdelingId=" + avdelingId + "]";
+				+ manedslonn + ", avdeling=" + avdeling.getNavn() + "]";
 	}
 
 	

@@ -7,6 +7,10 @@
 	<persistence-unit name="ansattPU" transaction-type="RESOURCE_LOCAL">
 
 		<class>oblig3.Ansatt</class>
+		<class>oblig3.Avdeling</class>
+		<class>oblig3.Prosjekt</class>
+		<class>oblig3.Prosjektdeltagelse</class>
+		
 		
 		<properties>
 		    <!--  Generelle JPA properties -->
