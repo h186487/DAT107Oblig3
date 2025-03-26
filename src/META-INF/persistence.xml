@@ -14,9 +14,30 @@
 			
 			<!--  Erstatt verdiene her med egen database (xxxx), bruker (xxxx) og passord (yyyy) -->
 			<property name="jakarta.persistence.jdbc.url" 
-					value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5433/h186491"/>
-			<property name="jakarta.persistence.jdbc.user" value="h186491"/>
-		    <property name="jakarta.persistence.jdbc.password" value="1234"/>
+					value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5433/h186487"/>
+			<property name="jakarta.persistence.jdbc.user" value="h186487"/>
+		    <property name="jakarta.persistence.jdbc.password" value="12345"/>
+			
+			<!--  EclipseLink properties -->
+            <!--  Se https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
+            <property name="eclipselink.logging.level" value="WARNING"/>
+		</properties>
+		
+	</persistence-unit>
+	
+	<persistence-unit name="avdelingPU" transaction-type="RESOURCE_LOCAL">
+
+		<class>oblig3.Avdeling</class>
+		
+		<properties>
+		    <!--  Generelle JPA properties -->
+			<property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+			
+			<!--  Erstatt verdiene her med egen database (xxxx), bruker (xxxx) og passord (yyyy) -->
+			<property name="jakarta.persistence.jdbc.url" 
+					value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5433/h186487"/>
+			<property name="jakarta.persistence.jdbc.user" value="h186487"/>
+		    <property name="jakarta.persistence.jdbc.password" value="12345"/>
 			
 			<!--  EclipseLink properties -->
             <!--  Se https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
